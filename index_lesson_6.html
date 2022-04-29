@@ -16,12 +16,11 @@
             <li><a href="#"><img src="img/contacts.svg" alt="contacts"></a></li>
             <li><a href="#" v-on:click="isVisibleCart = !isVisibleCart" class="btn-basket"><img src="img/basket.svg"
                                                                                                 alt="basket"></a></li>
-            <li><input class="header-input" type="text" placeholder="Search by name" v-model.lazy="searchLine"></li>
-            <li>
+            <li><input class="header-input" type="text" placeholder="Search by name" v-model.lazy="searchLine">
                 <search-block :search="searchLine"></search-block>
             </li>
         </ul>
-        <err ref="err" :style="errorOfServer ? { 'display': 'block' } : { 'display': 'none' }">
+        <err ref="err"></err>
         <div class="header_title">
             <h1 class="h1_all">Welcome to our shop</h1>
             <p class="p_all top_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus,
@@ -49,8 +48,8 @@
         </div>
     </div>
     <!-- block of basket items from server -->
-    <div class="text_middle" :style="isVisibleCart ? { 'display': 'block' } : { 'display': 'none' }">
-            <basket-block-list></basket-block-list>
+    <div>
+        <basket-block-list :stat="isVisibleCart"></basket-block-list>
     </div>
 
 </div>
