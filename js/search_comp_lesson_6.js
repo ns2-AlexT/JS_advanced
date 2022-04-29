@@ -11,6 +11,7 @@ Vue.component('search-block', {
         // method of filtering of goods from server
         filterGoods(search) {
             if (search) {
+                console.log(search)
                 const regexp = new RegExp(search, 'i');
                 this.good_filtered = this.$parent.currentList.filter(product => regexp.test(product.product_name));
                 // send filtered data to the parent
@@ -28,8 +29,11 @@ Vue.component('search-block', {
                 this.all_goods = data;
             });
     },
+    updated(){
+        console.log(search);
+    },
     template: `
-        <button @click="filterGoods(search)" class="top_buttion"> Search</button>
+        <button @click="filterGoods(search)"> Search</button>
     `
 }
 )
