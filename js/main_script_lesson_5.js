@@ -9,7 +9,6 @@ const app = new Vue(
             isVisibleCart: false,
             IsVisibleGood: false,
             searchLine: '',
-            errorOfServer: false,
         },
         methods: {
             // request to sever and return data
@@ -17,7 +16,6 @@ const app = new Vue(
                 return fetch(`${mainUrl + url}`)
                     .then(result => result.json())
                     .catch(error => {
-                        this.errorOfServer = true;
                         this.$root.$refs.err.addError(error.message);
                     })
             },

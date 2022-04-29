@@ -1,4 +1,5 @@
 Vue.component('basket-block-list', {
+        props: ['stat'],
         data() {
             return {
                 basket_items: [],
@@ -17,8 +18,9 @@ Vue.component('basket-block-list', {
         template:
         // render HTML-block to main index file
             `
-            <div>
-            <div> Your basket </div>
+        <div>
+            <div class="container_for_basket" :style="stat ? { 'display': 'block' } : { 'display': 'none' }">
+            <div class="container_for_basket"> Your basket  </div>
                 <div v-for="basket_item in basket_items" class="container_for_basket" style="justify-content: center"
                      :key="basket_item.id_product">
                     <div class="block_of_good">
@@ -30,7 +32,9 @@ Vue.component('basket-block-list', {
                         </div>
                     </div>
                 </div>
+              
             </div>
+        </div>    
             `
     }
 )

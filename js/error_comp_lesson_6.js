@@ -2,12 +2,14 @@ Vue.component('err', {
         data() {
             return {
                 statusOfError: '',
+                isError: false,
             }
         },
         methods: {
             addError(err){
                 this.statusOfError = err;
-            },
+                this.isError = true;
+                }
         },
         mounted() {
         },
@@ -15,8 +17,8 @@ Vue.component('err', {
         template:
             // render HTML-block to main index file
             `
-            <div>
-                <p> Error from server : {{ statusOfError }} </p>
+            <div :style="this.isError ? { 'display': 'block' } : { 'display': 'none' }">
+                <div> Error from server : {{ statusOfError }} </div>
             </div>
             `
     }
