@@ -2,7 +2,7 @@ Vue.component('search-block', {
     props: ['search'],
     data() {
         return {
-            catalog: '/catalogData.json',
+            catalog: '/api/products',
             good_filtered: [],
             all_goods: [],
         }
@@ -11,7 +11,7 @@ Vue.component('search-block', {
         // method of filtering of goods from server
         filterGoods(search) {
             if (search) {
-                console.log(search)
+                // console.log(search)
                 const regexp = new RegExp(search, 'i');
                 this.good_filtered = this.$parent.currentList.filter(product => regexp.test(product.product_name));
                 // send filtered data to the parent

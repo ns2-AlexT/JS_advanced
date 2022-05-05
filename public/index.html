@@ -39,7 +39,9 @@
                         <div class="card-body">
                             <h5 class="card-title"> {{ good.product_name }}</h5>
                             <p>price: {{ good.price }} </p>
-                            <button class="top_buttion" data-id="${good.id}" href="#">Buy now</button>
+                            <button class="top_buttion" data-id="${good.id}"
+                                    @click="$root.$refs.basketBlockList.addProduct(good)">Buy now
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +51,7 @@
     </div>
     <!-- block of basket items from server -->
     <div>
-        <basket-block-list :stat="isVisibleCart"></basket-block-list>
+        <basket-block-list :stat="isVisibleCart" ref="basketBlockList"></basket-block-list>
     </div>
 
 </div>
@@ -57,6 +59,6 @@
 <script src="js/error_comp_lesson_6.js"></script>
 <script src="js/basket_comp_lesson_6.js"></script>
 <script src="js/search_comp_lesson_6.js"></script>
-<script src="js/main_script_lesson_5.js"></script>
+<script src="js/main_script.js"></script>
 </body>
 </html>
