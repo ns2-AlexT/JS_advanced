@@ -62,4 +62,28 @@ Vue.component('basketBlockList', {
         </div>    
             `
     }
-)
+);
+// Vue.component('minCart', {
+//     data() {
+//         return {
+//             showCart: false,
+//         }
+//     },
+//     methods: {
+//         showBasketMain() {
+//             this.showCart = false;
+//             this.$parent.isVisibleCart = true;
+//         },
+//     },
+//     mounted() {
+//         this.$root.$refs.basketBlockList.mounted();
+//     },
+//     template: `
+//         <div>
+//             <a class="btn-cart" @click="showCart = !showCart" ><img src="img/basket.svg" alt="basket"></a>
+//             <a class="cart-block" v-show="showCart">
+//
+//             <p v-if=!this.$root.$refs.basketBlockList.basket_items.length>Корзина пуста</p>
+//             <button class="btn-cart" type="button" @click="showBasketMain">Открыть корзину</button></a>
+//         </div>`
+// });

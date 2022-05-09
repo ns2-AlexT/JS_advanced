@@ -13,12 +13,12 @@ Vue.component('search-block', {
             if (search) {
                 // console.log(search)
                 const regexp = new RegExp(search, 'i');
-                this.good_filtered = this.$parent.currentList.filter(product => regexp.test(product.product_name));
+                this.good_filtered = this.$root.$refs.goodsBlockList.currentList.filter(product => regexp.test(product.product_name));
                 // send filtered data to the parent
-                this.$parent.currentList = this.good_filtered;
+                this.$root.$refs.goodsBlockList.currentList = this.good_filtered;
             } else {
                 // send all data from server to the parent
-                this.$parent.currentList = this.all_goods;
+                this.$root.$refs.goodsBlockList.currentList = this.all_goods;
             }
         },
     },

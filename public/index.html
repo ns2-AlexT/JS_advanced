@@ -14,8 +14,7 @@
         <ul class="header">
             <li><a href="index.html"><img src="img/logo.svg" alt="logo"></a></li>
             <li><a href="#"><img src="img/contacts.svg" alt="contacts"></a></li>
-            <li><a href="#" v-on:click="isVisibleCart = !isVisibleCart" class="btn-basket"><img src="img/basket.svg"
-                                                                                                alt="basket"></a></li>
+            <li><min-cart ref="minCart"></min-cart></li>
             <li><input class="header-input" type="text" placeholder="Search by name" v-model.lazy="searchLine">
                 <search-block :search="searchLine"></search-block>
             </li>
@@ -32,32 +31,21 @@
     </div>
     <div class="container_middle">
         <!-- block of items from server -->
-        <div class="container_for_goods" style="justify-content: center">
-            <div v-if="IsVisibleGood" class="text_middle"> Products
-                <div v-for="good in currentList" :key="good.id_product">
-                    <div class="block_of_good">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ good.product_name }}</h5>
-                            <p>price: {{ good.price }} </p>
-                            <button class="top_buttion" data-id="${good.id}"
-                                    @click="$root.$refs.basketBlockList.addProduct(good)">Buy now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-else class="text_middle"> {{goodsItem}}</div>
-        </div>
-    </div>
-    <!-- block of basket items from server -->
-    <div>
+        <goods-block-list :stat="isVisibleCart" :stat_2="isShowProduct" ref="goodsBlockList"></goods-block-list>
+        <!-- block of item -->
+        <product-block :isshow="isShowProduct" ref="productBlock"></product-block>
+        <!-- block of basket items from server -->
         <basket-block-list :stat="isVisibleCart" ref="basketBlockList"></basket-block-list>
     </div>
+</div>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/error_comp_lesson_6.js"></script>
+<script src="js/goods_comp.js"></script>
+<script src="js/product_comp.js"></script>
 <script src="js/basket_comp_lesson_6.js"></script>
+<script src="js/min_cart_comp.js"></script>
 <script src="js/search_comp_lesson_6.js"></script>
 <script src="js/main_script.js"></script>
 </body>
