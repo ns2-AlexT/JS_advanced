@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="app" class="container_top">
+    <div class="top_conteiner_box">
+        <ul class="header">
+            <li><a href="index.html"><img src="img/logo.svg" alt="logo"></a></li>
+            <li><a href="#"><img src="img/contacts.svg" alt="contacts"></a></li>
+            <li><min-cart ref="minCart"></min-cart></li>
+            <li><input class="header-input" type="text" placeholder="Search by name" v-model.lazy="searchLine">
+                <search-block :search="searchLine"></search-block>
+            </li>
+        </ul>
+        <err ref="err"></err>
+        <div class="header_title">
+            <h1 class="h1_all">Welcome to our shop</h1>
+            <p class="p_all top_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus,
+                aspernatur
+                eveniet!
+            </p>
+            <a class="top_buttion" href="#">See our products</a>
+        </div>
+    </div>
+    <div class="container_middle">
+        <!-- block of items from server -->
+        <goods-block-list :stat="isVisibleCart" :stat_2="isShowProduct" ref="goodsBlockList"></goods-block-list>
+        <!-- block of item -->
+        <product-block :isshow="isShowProduct" ref="productBlock"></product-block>
+        <!-- block of basket items from server -->
+        <basket-block-list :stat="isVisibleCart" ref="basketBlockList"></basket-block-list>
+    </div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/error_comp_lesson_6.js"></script>
+<script src="js/goods_comp.js"></script>
+<script src="js/product_comp.js"></script>
+<script src="js/basket_comp_lesson_6.js"></script>
+<script src="js/min_cart_comp.js"></script>
+<script src="js/search_comp_lesson_6.js"></script>
+<script src="js/main_script.js"></script>
+</body>
+</html>
