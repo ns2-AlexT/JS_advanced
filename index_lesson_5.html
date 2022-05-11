@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="app" class="container_top">
+    <div class="top_conteiner_box">
+        <ul class="header">
+            <li><a href="index.html"><img src="img/logo.svg" alt="logo"></a></li>
+            <li><a href="#"><img src="img/contacts.svg" alt="contacts"></a></li>
+            <li><a href="#" v-on:click="isVisibleCart = !isVisibleCart" class="btn-basket"><img src="img/basket.svg"
+                                                                                                alt="basket"></a></li>
+            <li>
+                <input class="header-input" type="text" placeholder="Search by name" v-model.lazy="searchLine">
+                <button @click="filterGoods(searchLine)" class="top_buttion"> Search</button>
+            </li>
+        </ul>
+        <div class="header_title">
+            <h1 class="h1_all">Welcome to our shop</h1>
+            <p class="p_all top_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus,
+                aspernatur
+                eveniet!
+            </p>
+            <a class="top_buttion" href="#">See our products</a>
+        </div>
+    </div>
+    <div class="container_middle">
+        <!-- block of items from server -->
+        <div class="container_for_goods" style="justify-content: center">
+            <div v-if="IsVisibleGood" class="text_middle"> Products
+                <div v-for="good in currentList" :key="good.id_product">
+                    <div class="block_of_good">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ good.product_name }}</h5>
+                            <p>price: {{ good.price }} </p>
+                            <button class="top_buttion" data-id="${good.id}" href="#">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="text_middle"> {{goodsItem}}</div>
+        </div>
+    </div>
+    <!-- block of basket items from server -->
+    <div class="text_middle" :style="isVisibleCart ? { 'display': 'block' } : { 'display': 'none' }">Your
+        basket
+        <div v-for="basket_item in basketItem" class="container_for_basket" style="justify-content: center"
+             :key="basket_item.id_product">
+            <div class="block_of_good">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ basket_item.product_name }}</h5>
+                    <p>price: {{ basket_item.price }}</p>
+                    <p>quantity: {{ basket_item.quantity }}</p>
+                    <a href="#" class="del_buttion" data-id="${this.id}">X</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/main_script_lesson_5.js"></script>
+</body>
+</html>
