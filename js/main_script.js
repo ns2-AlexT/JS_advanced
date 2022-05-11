@@ -179,7 +179,7 @@ class Basket {
                 find.quantity--;
                 // make_basket._render();
             }
-            console.log('!!!=== ', find, '  ', data.result)
+            // console.log('!!!=== ', find, '  ', data.result)
         })
     }
 }
