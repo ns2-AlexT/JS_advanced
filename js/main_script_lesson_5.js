@@ -5,37 +5,23 @@ const app = new Vue(
         el: '#app',
         data: {
             currentList: [],
-            basketItem: [],
             goodsItem: [],
             isVisibleCart: false,
             IsVisibleGood: false,
-            filteredItem: false,
             searchLine: '',
         },
         methods: {
+            // request to sever and return data
             getJson(url) {
-                return fetch(url ? url : `${mainUrl + url}`)
+                return fetch(`${mainUrl + url}`)
                     .then(result => result.json())
                     .catch(error => {
-                        console.log(error);
+                        this.$root.$refs.err.addError(error.message);
                     })
             },
-            checkBasketItem() {
-                if (this.basketItem) {
-                }
-            },
-            filterGoods(searchLine) {
-                if (searchLine) {
-                    const regexp = new RegExp(searchLine, 'i');
-                    this.filteredItem = this.goodsItem.filter(product => regexp.test(product.product_name));
-                    console.log(this.filteredItem);
-                    this.currentList = this.filteredItem;
-                } else {
-                    this.currentList = this.goodsItem;
-                }
-            },
+            // get all goods from server
             getItem() {
-                this.getJson(`${mainUrl}/catalogData.json`).then(data => {
+                this.getJson(`/catalogData.json`).then(data => {
                     if (data) {
                         this.goodsItem = data;
                         this.IsVisibleGood = true;
@@ -47,20 +33,10 @@ const app = new Vue(
                     }
                 });
             },
-            getBasket() {
-                this.getJson(`${mainUrl}/getBasket.json`).then(data => {
-                    if (data) {
-                        this.basketItem = data['contents'];
-                    }
-                });
-            },
         },
+        // fill goods from server on start app
         mounted() {
-            this.getBasket();
             this.getItem();
         },
-        updated() {
-            // this.getItem();
-        }
     }
 )
